@@ -147,6 +147,57 @@ function os2web_news_page_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-5';
     $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Facet søgning på nyheder',
+      'title' => '',
+      'body' => '<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorter efter: <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Borger</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Erhverv</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Politik</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Møder</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Udbud</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news" rel="nofollow">Høringer</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tidspunkt: <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news&f[1]=ds_changed%3Apast_24_hours" rel="nofollow">Sidste 24 timer</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news&f[1]=ds_changed%3Apast_hour" rel="nofollow">Sidste time</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news&f[1]=ds_changed%3Apast_month" rel="nofollow">Sidste måned</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news&f[1]=ds_changed%3Apast_week" rel="nofollow">Sidste uge</a></li>
+          <li><a href="/search/node/?f[0]=bundle%3Aos2web_base_news&f[1]=ds_changed%3Apast_year" rel="nofollow">Sidste år</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>',
+      'format' => 'plain_text',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][0] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'top';
     $pane->type = 'views_panes';
     $pane->subtype = 'os2web_news_page-panel_pane_1';
     $pane->shown = TRUE;
@@ -161,12 +212,12 @@ function os2web_news_page_default_page_manager_pages() {
       'css_class' => 'well',
     );
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][1] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-5';
+  $display->title_pane = 'new-6';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['os2web_news_page'] = $page;
