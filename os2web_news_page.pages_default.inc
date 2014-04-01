@@ -15,7 +15,7 @@ function os2web_news_page_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'OS2web News Page';
   $page->admin_description = '';
-  $page->path = 'nyhedsoversigt';
+  $page->path = 'nyheder';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
