@@ -36,7 +36,7 @@ function os2web_news_page_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 18,
       ),
-      'spotboks' => array(
+      'spotbox' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -52,7 +52,7 @@ function os2web_news_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_os2web_news_page_type',
     'label' => 'Nyhedstype',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
