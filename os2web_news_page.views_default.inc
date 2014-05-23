@@ -15,7 +15,7 @@ function os2web_news_page_views_default_views() {
   $view->description = 'View containing all news displays for news page';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'news-page-views';
+  $view->human_name = 'OS2web News Page';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -120,6 +120,10 @@ function os2web_news_page_views_default_views() {
   $handler->display->display_options['arguments']['field_os2web_base_field_struct_tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['field_os2web_base_field_struct_tid']['validate_options']['transform'] = TRUE;
   $handler->display->display_options['arguments']['field_os2web_base_field_struct_tid']['validate']['fail'] = 'ignore';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -135,6 +139,35 @@ function os2web_news_page_views_default_views() {
     'os2web_base_news' => 'os2web_base_news',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filterkriterie: Indhold: Arkiveringsdato større end */
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['id'] = 'field_os2web_news_page_archive_value';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['table'] = 'field_data_field_os2web_news_page_archive';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['field'] = 'field_os2web_news_page_archive_value';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['ui_name'] = 'Indhold: Arkiveringsdato større end';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['expose']['operator_id'] = 'field_os2web_news_page_archive_value_op';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['expose']['label'] = 'Arkiveringsdato (field_os2web_news_page_archive)';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['expose']['operator'] = 'field_os2web_news_page_archive_value_op';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['expose']['identifier'] = 'field_os2web_news_page_archive_value';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    4 => 0,
+    7 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value']['default_date'] = 'now';
+  /* Filterkriterie: Indhold: Arkiveringsdato er tom */
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['id'] = 'field_os2web_news_page_archive_value_1';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['table'] = 'field_data_field_os2web_news_page_archive';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['field'] = 'field_os2web_news_page_archive_value';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['ui_name'] = 'Indhold: Arkiveringsdato er tom';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_os2web_news_page_archive_value_1']['form_type'] = 'date_text';
 
   /* Display: list 1 top */
   $handler = $view->new_display('panel_pane', 'list 1 top', 'panel_pane_1');
@@ -649,6 +682,7 @@ function os2web_news_page_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Alle'),
+    t('Arkiveringsdato (field_os2web_news_page_archive)'),
     t('list 1 top'),
     t('View panes'),
     t('list 2 left'),
